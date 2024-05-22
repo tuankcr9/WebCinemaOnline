@@ -1,0 +1,59 @@
+<section id="room">
+	<table id="room-admin" class="display" data-page-size="10">
+		<thead>
+			<tr>
+				<h3 class="d-inline">Danh sách các phòng chiếu đang có trong hệ thống</h3>
+				<a href="/admin/create_movies" class="btn btn-primary ms-3">Thêm <i class="bx bx-plus-circle"></i></a>
+			</tr>
+			<tr>
+				<th class="d-none">idCinemas</th>
+				<th>STT</th>
+				<th>Tên phòng</th>
+				<th>Tên rạp</th>
+				<th>Địa chỉ</th>
+				<th>Thao tác</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{{#each room}}
+				<tr>
+					<td class="d-none"><input class="idMovies" type="hidden" value="/admin/delete_movies?id={{this.room_id}}" /></td>
+					<td>{{this.stt}}</td>
+					<td>{{this.room_name}}</td>
+					<td>{{this.room_cinema}}</td>
+					<td>{{this.room_address}}</td>
+					<td><a href="/admin/edit_cinemas?id={{this.room_id}}" class="btn btn-primary mx-1">Chỉnh sửa</a>
+						<button class="btn btn-danger btn-cinemas-delete">
+							Xóa
+						</button></td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+	{{#if success}}
+		<div class="alert alert-success">{{success}}</div>
+	{{/if}}
+	{{#if error}}
+		<div class="alert alert-danger">{{error}}</div>
+	{{/if}}
+
+	<div class="modal fade" id="modal-movie-delete" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Bạn có muốn xóa phim không?</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p style="font-size: 14px;">Bạn có chắc chắn muốn chỉnh sửa dữ liệu không?</p>
+				</div>
+				<div class="modal-footer modal-footer-uniform">
+					<button type="button" class="btn btn-md btn-default" data-bs-dismiss="modal">Thoát</button>
+					<a onclick="deleteMovies()" href="" type="submit" value="Edit" class="btn btn-md btn-primary float-end btn-delete-confirm">Xóa</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>

@@ -1,0 +1,4 @@
+{
+	"watch": ["*.js", "*.hbs", "*.css", "*.json"],
+	"ext": "*.js hbs css json"
+}

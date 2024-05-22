@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="/css/ordered.css" />
+
+<div class="container w3l-main-user" id="orderInfo">
+    <div class="row">
+        <div class="user-title">
+            <h1 class="hny-title">Các vé đã đặt của người dùng</h1>
+        </div>
+        <table id="user-ordered" class="table-ordered">
+		<thead class="ordered-header">
+			<tr>
+				<th>Poster</th>
+				<th>Tên phim</th>
+				<th>Ngày chiếu</th>
+                <th>Phòng chiếu</th>
+				<th>Giờ chiếu</th>
+                <th>Hàng ghế</th>
+				<th>Combo</th>
+                <th>Giá vé</th>
+			</tr>
+		</thead>
+		<tbody>
+            {{#each ordered}}
+				<tr class="content-ordered" onclick="window.location.href='/booking/eticket/{{this.booking_id}}'">
+					<td><img src="{{this.movie_poster}}" width="90" height="100"></td>
+					<td>{{this.movie_name}}</td>
+					<td id="D_{{this.booking_id}}"></td>
+                    <td>{{this.room_name}}</td>
+					<td>{{this.schedule_start}}</td>
+                    <td>{{this.seat_name}}</td>
+					<td>{{this.combo_name}}</td>
+                    <td id="P_{{this.booking_id}}">{{this.price}}</td>
+				</tr>
+            {{/each}}
+		</tbody>
+	</table>
+</div>
+
+<script>
+
+    function formatNumber(number) {
+    const formatter = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' });
+    const formattedNumber = formatter.format(number);
+    const parts = formattedNumber.split('.');
+    const decimalPart = parts[1] || '00';
+    const integerPart = parts[0];
+    const integerPartWithCommas = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return `${integerPartWithCommas}.${decimalPart}`;
+}
+
+
+    //hàm xử lý ngày tháng
+  function handleBirthday(date){
+      var d = new Date(date).toISOString()
+      d = d.split('-')
+      var getYear = d[0]
+      var getMonth = d[1]
+      var getDay = d[2].substring(0,2)
+      var fullDate = getDay + "/" + getMonth + "/" + getYear
+      return fullDate
+  }
+    {{#each ordered}}
+        var getPrice = formatNumber({{this.price}})
+        var getDate = handleBirthday("{{this.schedule_date}}")
+        document.getElementById("D_{{this.booking_id}}").innerText = getDate
+        document.getElementById("P_{{this.booking_id}}").innerText = getPrice
+    {{/each}}
+</script>

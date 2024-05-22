@@ -1,0 +1,78 @@
+<section id="create-container">
+	<a href="/admin/movies" class="btn btn-primary">Quay về <i class="bx bx-left-arrow-circle"></i></a>
+
+	{{#if successMessage}}
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			{{successMessage}}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	{{/if}}
+
+	{{#if errorMessage}}
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			{{errorMessage}}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	{{/if}}
+	{{#if message}}
+		<div class="alert alert-success">{{message}}</div>
+	{{/if}}
+	{{#if success}}
+		<div class="alert alert-success">{{success}}</div>
+	{{/if}}
+	{{#if error}}
+		<div class="alert alert-danger">{{error}}</div>
+	{{/if}}
+
+	<form action="/admin/create_movies" method="POST">
+		<div class="form-group">
+			<label for="movieName">Tên phim:</label>
+			<input type="text" class="form-control" id="movieName" name="movieName" required />
+		</div>
+		<div class="form-group">
+			<label for="movieDescription">Mô tả phim:</label>
+			<textarea class="form-control" id="movieDescription" name="movieDescription" rows="3" required></textarea>
+		</div>
+		<div class="form-group">
+			<label for="movieTrailer">Link trailer phim:</label>
+			<input type="text" class="form-control" id="movieTrailer" name="movieTrailer" />
+		</div>
+		<div class="form-group">
+			<label for="movieCens">Độ tuổi phim:</label>
+			<input type="text" class="form-control" id="movieCens" name="movieCens" />
+		</div>
+		<div class="form-group">
+			<label for="movieGenres">Thể loại phim:</label>
+			<input type="text" class="form-control" id="movieGenres" name="movieGenres" required />
+		</div>
+		<div class="form-group">
+			<label for="movieRelease">Ngày phát hành phim:</label>
+			<input type="date" class="form-control" id="movieRelease" name="movieRelease" />
+		</div>
+		<div class="form-group">
+			<label for="movieStatus">Trạng thái phim:</label>
+			<select class="form-control" id="movieStatus" name="movieStatus" required>
+				<option value="now-showing">Đang chiếu</option>
+				<option value="coming-soon">Sắp chiếu</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="movieLenght">Thời lượng phim:</label>
+			<input type="time-" class="form-control" id="movieLenght" name="movieLenght" />
+		</div>
+		<div class="form-group">
+			<label for="movieFormat">Định dạng phim:</label>
+			<input type="text" class="form-control" id="movieFormat" name="movieFormat" />
+		</div>
+		<div class="form-group">
+			<label for="moviePoster">Link ảnh poster phim:</label>
+			<input type="text" class="form-control" id="moviePoster" name="moviePoster" />
+		</div>
+		<button type="submit" class="btn btn-primary mt-2">Thêm phim</button>
+	</form>
+
+</section>

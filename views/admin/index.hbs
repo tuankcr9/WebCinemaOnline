@@ -1,0 +1,47 @@
+<section id="cinema-list">
+	<div id="admin-table-container">
+		<table id="admin-index" class="display" data-page-size="5">
+			<thead>
+				<tr><h3 class="d-inline">Danh sách các cụm rạp</h3></tr>
+				<tr>
+					{{! phần data để hiện thị chi tiết }}
+					<th class="text-center d-none">Thời gian bắt đầu</th>
+					<th class="text-center d-none">Thời gian kết thúc</th>
+					<th class="text-center d-none">Thời lượng phim</th>
+					<th class="text-center d-none">Ghế thường</th>
+					<th class="text-center d-none">Ghế vip</th>
+					{{! ./phần data để hiện thị chi tiết }}
+					<th>Tên rạp</th>
+					<th>Địa chỉ</th>
+					<th>Tên phim</th>
+					<th>Ngày chiếu</th>
+					<th class="text-center">Thao tác</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each result}}
+					<tr>
+						{{! phần data để hiện thị chi tiết }}
+						<td class="text-center d-none">{{this.schedule_start}}</td>
+						<td class="text-center d-none">{{this.schedule_end}}</td>
+						<td class="text-center d-none">{{this.movie_lenght}}</td>
+						<td class="text-center d-none">{{this.number_of_regular_seats}}</td>
+						<td class="text-center d-none">{{this.number_of_vip_seats}}</td>
+						{{! ./phần data để hiện thị chi tiết }}
+						<td>{{this.cinema_name}}</td>
+						<td>{{this.cinema_address}}</td>
+						<td>{{this.movie_name}}</td>
+						<td>{{this.schedule_date}}</td>
+						<td><a href="/admin/edit" class="btn-edit btn btn-primary mx-1">Chỉnh sửa
+								<i class="bx bx-edit"></i>
+							</a>
+							<a href="/admin/delete" class="btn-delete btn btn-danger">Xóa
+								<i class="bx bx-trash"></i>
+							</a>
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</section>

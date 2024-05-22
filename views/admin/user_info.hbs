@@ -1,0 +1,29 @@
+<section id="user-info">
+	<table id="user-info-table" class="display" data-page-size="10">
+		<thead>
+			<tr>Danh sách người dùng</tr>
+			<tr>
+				<th>Username</th>
+				<th>Họ và Tên</th>
+				<th>Giới tính</th>
+				<th>Email</th>
+				<th>Số điện thoại</th>
+				<th>Điểm thưởng</th>
+				<th>Thao tác</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each userInfo}}
+				<tr>
+					<td>{{this.username}}</td>
+					<td>{{this.user_fullname}}</td>
+					<td>{{this.user_gender}}</td>
+					<td>{{this.user_email}}</td>
+					<td>{{this.user_phone}}</td>
+					<td>{{this.user_point}}</td>
+					<td><button class="btn btn-primary mx-1">Chỉnh sửa</button><button class="btn btn-danger">Xóa</button></td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</section>

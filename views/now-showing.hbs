@@ -1,0 +1,38 @@
+<section class="w3l-grids">
+		<div class="grids-main py-5">
+			<div class="container py-lg-4">
+				<div class="headerhny-title">
+					<div class="w3l-title-grids" style="margin-top: 40px">
+						<div class="headerhny-left">
+							<h3 class="hny-title" style="margin: top 10px;">Phim đang chiếu</h3>
+						</div>
+						<div class="headerhny-right text-lg-right">
+							<h4><a class="show-title" href="/movie/upcoming">Phim sắp chiếu</a></h4>
+						</div>
+					</div>
+				</div>
+
+				{{#if nowShowingMovies}}
+				<div class="w3l-populohny-grids">
+					{{#each nowShowingMovies}}
+						<div class="item vhny-grid">
+							<div class="box16 mb-0">
+								<figure>
+									<img class="img-fluid" src="{{this.movie_poster}}" alt="">
+								</figure>
+								<a href="/movie/{{this.movie_id}}">
+									<div class="box-content">
+										<h3 class="title">{{this.movie_name}}</h3>
+										<h4> <span class="post"><span class="fa fa-clock-o"> </span> {{this.movie_lenght}}</span>
+											<span class="post fa fa-heart text-right"></span>
+										</h4>
+									</div>
+								</a>
+							</div>
+						</div>
+					{{/each}}
+				</div>
+				{{/if}}
+			</div>
+		</div>
+</section>

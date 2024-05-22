@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="/css/sign-in.css">
+<link rel="stylesheet" type="text/css" href="/css/as-alert-message.min.css">
+<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/css/sign-in.css">
+
+	<div class="container_signup_signin" id="container_signup_signin">
+		<div class="form-container sign-in-container">
+			<form name="sign-in-form" style="color: var(--theme-title);" method="post">
+				<h1>Sign in</h1>
+				<div class="social-container">
+					<a href="/auth/facebook" class="social" style="color: var(--theme-title);"><i class="fab fa-facebook-f"></i></a>
+					<a href="/auth/google" class="social" style="color: var(--theme-title);"><i
+							class="fab fa-google-plus-g"></i></a>
+					<a href="#" class="social" style="color: var(--theme-title);"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+				<span>or use your account</span>
+				<input type="email" placeholder="Email" name="email" value="{{ email }}"/>
+                <input type="password" placeholder="Password" name="password" />
+				<div class="form-group">
+                {{#if error}}
+                    <div class="alert alert-danger alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">{{ error }}&times;</button>
+                    </div>
+                {{/if}}
+                </div>
+				<a href="/recovery">Forgot your password?</a>
+				<button>Sign In</button>
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+					<h1>Don't have an account?</h1>
+					<p>Register and book your tickets now!!!</p>
+					<a href="/register" class="social"><button class="ghost" id="signUp">Register Now</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+

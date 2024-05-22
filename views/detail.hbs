@@ -1,0 +1,87 @@
+<section class="w3l-grids">
+		<div class="grids-main py-5">
+			<div class="container py-lg-4">
+				<div class="headerhny-title">
+					<div class="w3l-title-grids " style="margin-top: 40px">
+						<div class="headerhny-left">
+							<h3 class="hny-title" style="margin: top 10px;">Chi tiết phim</h3>
+						</div>
+						<div class="headerhny-right text-lg-right">
+							<h4><a class="show-title" href="/movie/now-showing">Phim đang chiếu</a></h4>
+						</div>
+					</div>
+				</div>
+
+				{{#if detailMovies}}
+				{{#each detailMovies}}
+				<div style="display: flex;">
+					<div style="flex-basis: 25%;">
+							<div class="item vhny-grid">
+								<div class="box16 mb-0">
+									<figure>
+										<img class="img-fluid" src="{{this.movie_poster}}" alt="">
+									</figure>
+										<div class="box-content">
+											<h3 class="title">{{this.movie_name}}</h3>
+										</div>
+								</div>
+							</div>
+						<div class="button-center text-center mt-auto buy-ticket-btn">
+							<button class="btn watch-button" data-toggle="modal" data-target="#bookCinema" onclick="openModal('{{this.movie_id}}','{{this.movie_name}}')">Đặt vé ngay</button>
+						</div>
+					</div>
+					<div style="flex-basis: 75%; margin-left: 20px">
+						<p><strong>Tên phim: </strong>{{this.movie_name}}</p>
+						<p><strong>Độ tuổi: </strong>{{this.movie_cens}}</p>
+						<p><strong>Thể loại: </strong>{{this.movie_genres}}</p>
+						<p><strong>Thời lượng: </strong>{{this.movie_lenght}}</p>
+						<p><strong>Đinh dạng: </strong>{{this.movie_format}}</p>
+						<br>
+						<p><strong>Mô tả: </strong>{{this.movie_description}}</p>
+					</div>
+				</div>
+				{{/each}}
+			{{/if}}
+			</div>
+		</div>
+</section>
+
+<!-- Box chọn phim -->
+<div class="modal fade" id="bookCinema" tabindex="-1" role="dialog" aria-labelledby="bookCinemaLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Chọn rạp mà bạn muốn xem</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/booking" method="post">
+			<img src="/images/cinema.jpg" alt="Hình ảnh cinema" width="100%" height="300px"><br>
+			<input type="hidden" name="movie" id="movieId">
+			<input type="hidden" name="movie_name" id="movieName">
+			<input type="hidden" name="user_id" value="{{idUser}}">
+			<label for="cinema" class="title-cinema">Chọn cụm rạp</label>
+			<select name="cinema" class="custom-select">
+				<option selected>Chọn rạp mà bạn muốn</option>
+				{{#each cinemas}}
+					<option value="{{this.cinema_id}}">{{this.cinema_name}}</option>
+				{{/each}}
+			</select>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary">Xác nhận</button>
+			</div>
+		</form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+	function openModal(id, name){
+		document.getElementById("movieId").value = id
+		document.getElementById("movieName").value = name
+	}
+</script>

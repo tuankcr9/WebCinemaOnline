@@ -1,0 +1,44 @@
+<title>{{title}}</title>
+<link rel="stylesheet" type="text/css" href="/css/sign-in.css">
+<link rel="stylesheet" type="text/css" href="/css/as-alert-message.min.css">
+<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/css/sign-in.css">
+
+<div class="container_signup_signin" id="container_signup_signin">
+		<div class="form-container sign-in-container">
+			<form name="sign-in-form" style="color: var(--theme-title);" method="post">
+				<h1>Sign up</h1>
+				<span>or use your account</span>
+				<input name="name" type="text" placeholder="Name" value="{{ name }}"/>
+				<input name="email" type="email" placeholder="Email" value="{{ email }}"/>
+				<input name="password" type="password" placeholder="Password" />
+                <input name="repassword" type="password" placeholder="Confirm password" />
+				<input name="date" type="date" placeholder="Date of birth" value="{{ date }}"/>
+				<input name="phone" type="tel" placeholder="Phone number" value="{{ phone }}"/>
+				<div class="form-group">
+                {{#if error}}
+                    <div class="alert alert-danger alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">{{ error }}&times;</button>
+                    </div>
+                {{/if}}
+                </div>
+				<button>Sign up</button>
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+					<div class="social-container">
+						<a href="/auth/facebook" class="social" style="color: var(--theme-title);"><i class="fab fa-facebook-f"></i></a>
+						<a href="/auth/google" class="social" style="color: var(--theme-title);"><i
+								class="fab fa-google-plus-g"></i></a>
+						<a href="#" class="social" style="color: var(--theme-title);"><i class="fab fa-linkedin-in"></i></a>
+					</div>
+					<h1>Alreadt have an account?</h1>
+					<p>Sign in and book your tickets now!!!</p>
+					<a href="/login" class="social"><button class="ghost" id="signUp">Sign in</button></a>
+				</div>
+			</div>
+		</div>
+	</div>

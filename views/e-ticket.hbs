@@ -1,0 +1,91 @@
+<link rel="stylesheet" type="text/css" href="/css/progress.css">
+<link rel="stylesheet" type="text/css" href="/css/ticket-booking.css">	
+<link rel="stylesheet" type="text/css" href="/css/e-ticket.css">
+
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="js/jquery-1.11.0.min.js"></script>
+
+<div class="container" id="progress-container-id">
+    <div class="row">
+      <div class="col">
+        <div class="px-0 pt-4 pb-0 mt-3 mb-3">
+            <br>
+              <div class="ticket-body">
+                <div class="ticket">
+                  <div class="holes-top"></div>
+                  <div class="title">
+                    <p class="cinema">TDTU Cinema</p>
+                    <p class="movie-title">{{ticket.movie_name}}</p>
+                  </div>
+                  <div class="poster" style="text-align: center;">
+                    <img src="{{ticket.movie_poster}}"/>
+                  </div>
+                  <div class="info">
+                    <table class="info-table ticket-table">
+                      <tr>
+                        <th>SCREEN</th>
+                        <th>SEAT</th>
+                      </tr>
+                      <tr>
+                        <td class="bigger">{{ticket.room_name}}</td>
+                        <td class="bigger">{{ticket.seat_name}}</td>
+                      </tr>
+                    </table>
+                    <table class="info-table ticket-table">
+                      <tr>
+                        <th>PRICE</th>
+                        <th>DATE</th>
+                        <th>TIME</th>
+                      </tr>
+                      <tr>
+                        <td id="ticket-price">{{ticket.price}}</td>
+                        <td id="ticket-date"></td>
+                        <td>{{ticket.schedule_start}}</td>
+                      </tr>
+                    </table>
+                    <table class="info-table ticket-table">
+                      <tr>
+                        <th>COMBO</th>
+                      </tr>
+                      <tr>
+                        <td>{{ticket.combo_name}}</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="holes-lower"></div>
+                </div>
+              </div>
+              <input type="button" name="previous-step" class="home-page-btn" value="Trở về trang chủ" onclick="location.href='/';" />
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  //hàm xử lý ngày tháng
+  function handleBirthday(date){
+      var d = new Date(date).toISOString()
+      d = d.split('-')
+      var getYear = d[0]
+      var getMonth = d[1]
+      var getDay = d[2].substring(0,2)
+      var fullDate = getDay + "/" + getMonth + "/" + getYear
+      return fullDate
+  }
+  var getDate = handleBirthday("{{ticket.schedule_date}}")
+  document.getElementById("ticket-date").innerText = getDate
+
+
+function formatNumber(number) {
+    const formatter = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' });
+    const formattedNumber = formatter.format(number);
+    const parts = formattedNumber.split('.');
+    const decimalPart = parts[1] || '00';
+    const integerPart = parts[0];
+    const integerPartWithCommas = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return `${integerPartWithCommas}.${decimalPart}`;
+}
+
+var getPrice = formatNumber({{ticket.price}})
+document.getElementById("ticket-price").innerText = getPrice
+</script>

@@ -1,0 +1,268 @@
+<link rel="stylesheet" type="text/css" href="/css/progress.css">
+<link rel="stylesheet" type="text/css" href="/css/ticket-booking.css">
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/booking.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="/css/payment.css" />
+<script src="/javascripts/jquery-1.11.0.min.js"></script>
+
+
+<div class="container" id="progress-container-id">
+  <div class="row">
+    <div class="col">
+      <div class="px-0 pt-4 pb-0 mt-3 mb-3">
+        <form id="form" action="/booking/eticket" method="post">
+          <ul id="progressbar" class="progressbar-class">
+            <li class="active" id="step1">Chọn ngày và giờ</li>
+            <li id="step2" class="not_active">Lựa chỗ ngồi</li>
+            <li id="step3" class="not_active">Chọn bắp nước</li>
+            <li id="step4" class="not_active">Thanh toán</li>
+          </ul>
+          <br>
+          <input type="hidden" name="movieId" value="{{movieId}}">
+          <input type="hidden" name="userId" value="{{idUser}}">
+          {{!-- Chọn ngày và giờ --}}
+          <fieldset id="part1">
+            <input type="hidden" name="date" id="booking-date">
+            <input type="hidden" name="time" id="booking-time">
+            <input type="hidden" name="room" id="booking-room">
+            <div id="screen-select-div">
+              <h2>Show time Selection</h2>
+              <div class="carousel carousel-nav" data-flickity='{"contain": true, "pageDots": false }'>
+                <div class="carousel-cell" id="1" onclick="myFunction('1')">
+                  <div class="date-numeric">13</div>
+                  <div class="date-day">Thứ 2</div>
+                </div>
+
+                <div class="carousel-cell" id="2" onclick="myFunction('2')">
+                  <div class="date-numeric">14</div>
+                  <div class="date-day">Thứ 3</div>
+                </div>
+                <div class="carousel-cell" id="3" onclick="myFunction('3')">
+                  <div class="date-numeric">15</div>
+                  <div class="date-day">Thứ 4</div>
+                </div>
+                <div class="carousel-cell" id="4" onclick="myFunction('4')">
+                  <div class="date-numeric">16</div>
+                  <div class="date-day">Thứ 5</div>
+                </div>
+                <div class="carousel-cell" id="5" onclick="myFunction('5')">
+                  <div class="date-numeric">17</div>
+                  <div class="date-day">Thứ 6</div>
+                </div>
+                <div class="carousel-cell" id="6" onclick="myFunction('6')">
+                  <div class="date-numeric">18</div>
+                  <div class="date-day">Thứ 7</div>
+                </div>
+                <div class="carousel-cell" id="7" onclick="myFunction('7')">
+                  <div class="date-numeric">19</div>
+                  <div class="date-day">Chủ Nhật</div>
+                </div>
+              </div>
+              <input type="hidden" id="booking-time">
+              <ul class="time-ul">
+                {{#each times}}
+                <li class="time-li" >
+                  <div class="screens">
+                    {{this.room_name}}
+                  </div>
+                  <div class="time-btn R_{{this.room_id}}" id="R_{{this.room_id}}">
+                    
+                  </div>
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+            <input id="chooseSeat" type="button" name="next-step" class="next-step" value="Tiếp tục"
+              onclick="choosingSeat()" disabled />
+          </fieldset>
+          {{!-- Chọn chỗ ngồi --}}
+          <fieldset id="part2">
+            <input type="hidden" name="seats" id="seatsSelect">
+            
+            <div class="content">
+              <h2>Seat Booking</h2>
+              <div class="main">
+                <div class="demo">
+                  <div id="seat-map" class="seatCharts-container">
+                    <div class="front">SCREEN</div>
+                    <div id="seatContainer">
+                    </div>
+                  </div>
+                  <div class="booking-details">
+                    <ul class="book-left">
+                      <li>Movie </li>
+                      <li>Time </li>
+                      <li>Tickets</li>
+                      <li>Total</li>
+                      <li>Selected Seats</li>
+                    </ul>
+                    <ul class="book-right">
+                      <li>: {{movieName}}</li>
+                      <li>: <span class="date-time"></span></li>
+                      <li>: <span class="counter">0</span></li>
+                      <li>: <b><span class="total">0</span></b></li>
+                      <li class="selected-seats" class="scrollbar scrollbar1"></li>
+                    </ul>
+                    <div class="clear"></div>
+
+                    <div id="legend"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <input type="button" name="next-step" class="next-step" value="Tiếp tục" onclick="choosingPopcorn()" />
+            <input type="button" name="previous-step" class="previous-step" value="Chọn lại"
+              onclick="location.href='/booking/';" />
+          </fieldset>
+          {{!-- Chọn bắp nước --}}
+          <fieldset id="part3">
+            <input type="hidden" name="combos" id="combosSelect">
+            <input type="hidden" name="total" id="totalPrice">
+            <h2>Bắp/Nước</h2>
+            <div class="content-combo">
+              {{#each combos}}
+              <div class="combo">
+                <img src="{{this.combo_img}}" alt="">
+                <h2>{{this.combo_name}}</h2>
+                <p>{{this.combo_desc}}</p>
+                <p class="combo_price">{{this.combo_price}}</p>
+                <div class="quantity">
+                  <button class="minus">-</button>
+                  <input type="number" class="input" value="0" readonly>
+                  <button class="plus">+</button>
+                </div>
+              </div>
+              {{/each}}
+              <div class="booking-details" style="width: 100%; background-color: aliceblue">
+                <ul class="book-left">
+                  <li>Movie </li>
+                  <li>Time </li>
+                  <li>Tickets</li>
+                  <li>Combo</li>
+                  <li>Total</li>
+                  <li>Selected Seats</li>
+                </ul>
+                <ul class="book-right">
+                  <li >:  {{movieName}}</li>
+                  <li>: <span class="date-time"></span></li>
+                  <li>: <span class="counter">0</span></li>
+                  <li>: <span class="counter-combo">0</span></li>
+                  <li>: <b><span class="total">0</span></b></li>
+                  <li class="selected-seats" class="scrollbar scrollbar1"></li>
+                </ul>
+                <div class="clear"></div>
+                <input id="screen-next-btn" type="button" name="next-step" class="next-step" value="Thanh toán"
+                  onclick="paymentProcess()">
+              </div>
+            </div>
+          </fieldset>
+          <fieldset id="part4">
+            <!-- Thanh toán -->
+            <div id="payment_div">
+              <div class="payment-row">
+                <div class="col-75">
+                  <div class="payment-container">
+                    <div class="payment-row">
+                      <div class="col-50">
+                        <h3 id="payment-h3">Phương thức thanh toán</h3>
+                        <div class="payment-row payment">
+                          <div class="payment">
+                            <label for="card" class="method card">
+                              <div class="icon-container">
+                                <img class="bank-img" src="/images/sacombank.png">
+                                <img class="bank-img" src="/images/vietcombank.jpg">
+                                <img class="bank-img" src="/images/techcombank.png">
+                                <img class="bank-img" src="/images/tpbank.png">
+                              </div>
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="payment-row">
+                          <div class="col-50">
+                            <label for="cname">Tên thẻ người dùng</label>
+                            <input type="text" id="cname" name="cardname" placeholder="Họ và tên" required />
+                          </div>
+                          <div class="col-50">
+                            <label for="ccnum">Số thẻ ngân hàng</label>
+                            <input type="text" id="ccnum" name="cardnumber" placeholder="xxxx-xxxx-xxxx-xxxx"
+                              required />
+                          </div>
+                        </div>
+                        <div class="payment-row">
+                          <div class="col-50">
+                            <label for="expmonth">Năm hết hạn</label>
+                            <input type="text" id="expmonth" name="cardexp" placeholder="xx / xxxx" required />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input type="submit" name="next-step" class="next-step pay-btn" value="Xác nhận thanh toán"/>
+            <input type="button" name="previous-step" class="cancel-pay-btn" value="Đặt lại vé"
+              onclick="location.href='/booking';" />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/javascripts/booking.js"></script>
+
+<script>
+    {{#each times}}
+      var html = `<button id="T_{{this.schedule_id}}" data-room="{{this.room_name}}" type="button" class="screen-time"
+                      onclick="timeFunction('T_{{this.schedule_id}}')">
+                      {{this.schedule_start}}
+                    </button>`
+          document.getElementById("R_{{this.room_id}}").innerHTML += html
+    {{/each}}
+
+    var listRoom = []
+    var listRoomDup = []
+    
+
+      {{#each times}}
+          listRoom.push("R_{{this.room_id}}")
+        {{/each}}
+    for(var i = 0; i < listRoom.length-1; i++){ 
+      var count = 0;
+      for(var j = i+1; j < listRoom.length; j++){
+        if(listRoom[i] === listRoom[j]){
+            count++
+        }
+      }
+      if(count >= 1){
+        if(!listRoomDup.includes(listRoom[i]))
+          listRoomDup.push(listRoom[i])
+      }
+    }
+    console.log(listRoom)
+    console.log(listRoomDup)
+    if(listRoomDup.length > 0){
+      for(var i = 0; i < listRoomDup.length; i++){
+         var divDel = document.getElementsByClassName(listRoomDup[i])
+         console.log(divDel)
+         for(var j = 1; j < divDel.length; j++){
+            divDel[j].parentNode.remove(divDel)
+         }
+      }
+    }
+    
+    function formatNumber(number) {
+    const formatter = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' });
+    const formattedNumber = formatter.format(number);
+    const parts = formattedNumber.split('.');
+    const decimalPart = parts[1] || '00';
+    const integerPart = parts[0];
+    const integerPartWithCommas = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return `${integerPartWithCommas}.${decimalPart}`;
+    }
+    
+
+</script>

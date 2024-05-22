@@ -1,0 +1,11 @@
+#movies,
+#user-info,
+#cinema-list,
+#create-container,
+#cinemas {
+	padding: 28px;
+}
+
+#movies-edit-confirm {
+	/* display: none; */
+}

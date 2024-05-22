@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/css/search.css">
+<section class="w3l-grids">
+    <div class="grids-main py-5">
+        <div class="container py-lg-4">
+            <div class="headerhny-title">
+                <h1 class="hny-title">Tìm kiếm phim của bạn {{#if number}} <span class="search-number"> - {{number}} kết quả kiếm được</span> {{/if}}</h1> 
+            </div>
+			{{#if movies}}
+				<div class="w3l-populohny-grids">
+					{{#each movies}}
+						<div class="item vhny-grid">
+							<div class="box16 mb-0">
+								<figure>
+									<img class="img-fluid" src="{{this.movie_poster}}" alt="">
+								</figure>
+								<a href="/movie/{{this.movie_id}}">
+									<div class="box-content">
+										<h3 class="title">{{this.movie_name}}</h3>
+										<h4> <span class="post"><span class="fa fa-clock-o"> </span> {{this.movie_lenght}}</span>
+											<span class="post fa fa-heart text-right"></span>
+										</h4>
+									</div>
+								</a>
+							</div>
+						</div>
+					{{/each}}
+				</div>
+			{{/if}}
+			{{#if notFound}}
+				<div class="search-error">
+					<img src="/images/search-notFound.png" alt="Không tìm thấy tìm kiếm" class="search-error-img">
+					<h1 class="hny-title">Không tìm thấy phim mà bạn muốn</h1>
+					<p class="search-number">Hãy nhập nội dung tìm kiếm khác</p>
+				</div>
+			{{/if}}
+        </div>
+    </div>
+</section>

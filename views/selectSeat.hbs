@@ -1,0 +1,134 @@
+<link rel="stylesheet" type="text/css" href="/css/progress.css">
+<link rel="stylesheet" type="text/css" href="/css/ticket-booking.css">	
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="js/jquery-1.11.0.min.js"></script>
+
+<div class="container" id="progress-container-id">
+    <div class="row">
+      <div class="col">
+        <div class="px-0 pt-4 pb-0 mt-3 mb-3">
+          <form id="form">
+            <ul id="progressbar" class="progressbar-class">
+              <li class="not_active" id="step1">Show timing selection</li>
+              <li id="step2" class="active">Seat Selection</li>
+              <li id="step3" class="not_active">Payment</li>
+              <li id="step4" class="not_active">E-Ticket</li>
+            </ul>
+            <br>
+            <fieldset>
+                <div class="content">
+                    <h2>Seat Booking</h2>
+                    <div class="main">
+                        <div class="demo">
+                            <div id="seat-map" class="seatCharts-container">
+                                <div class="front">SCREEN</div>	
+                                <div class="seatCharts-row">
+                                    <div class="seatCharts-cell seatCharts-space">1</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">1</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">2</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">3</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">4</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">5</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">6</div>				
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">7</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">8</div>	
+                                </div>
+                                <div class="seatCharts-row">
+                                    <div class="seatCharts-cell seatCharts-space">2</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">1</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">2</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">3</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">4</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">5</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">6</div>				
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">7</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">8</div>	
+                                </div>
+                                <div class="seatCharts-row">
+                                    <div class="seatCharts-cell seatCharts-space">3</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">1</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">2</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">3</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">4</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">5</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">6</div>				
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">7</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">8</div>	
+                                </div>
+                                <div class="seatCharts-row">
+                                    <div class="seatCharts-cell seatCharts-space">4</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">1</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">2</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">3</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">4</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">5</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">6</div>				
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">7</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">8</div>	
+                                </div>
+                                <div class="seatCharts-row">
+                                    <div class="seatCharts-cell seatCharts-space">4</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">1</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">2</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">3</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">4</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">5</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">6</div>				
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">7</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">8</div>	
+                                </div>
+                                <div class="seatCharts-row">
+                                    <div class="seatCharts-cell seatCharts-space">4</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">1</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">2</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">3</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">4</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">5</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">6</div>				
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">7</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">8</div>	
+                                </div>
+                                <div class="seatCharts-row">
+                                    <div class="seatCharts-cell seatCharts-space">4</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">1</div>
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">2</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">3</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">4</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">5</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">6</div>				
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">7</div>	
+                                    <div id="1_1" role="checkbox" aria-checked="false" focusable="true" tabindex="-1" class="seatCharts-seat seatCharts-cell available">8</div>	
+                                </div>
+                            </div>
+                            <div class="booking-details">
+                                <ul class="book-left">
+                                    <li>Movie </li>
+                                    <li>Time </li>
+                                    <li>Tickets</li>
+                                    <li>Total</li>
+                                    <li>Selected Seats</li>
+                                </ul>
+                                <ul class="book-right">
+                                    <li>: Commando 3</li>
+                                    <li>: April 12, 22:00</li>
+                                    <li>: <span id="counter">0</span></li>
+                                    <li>: <b><i>RS.</i><span id="total">0</span></b></li>
+                                </ul>
+                                <div class="clear"></div>
+                                <ul id="selected-seats" class="scrollbar scrollbar1"></ul>
+                            
+                                        
+                                <div id="legend"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              <br>
+            </fieldset>
+            <input type="button" name="next-step" class="next-step" value="Proceed to Payment" onclick="location.href='/booking/payment';"/>
+            <input type="button" name="previous-step" class="previous-step" value="Back" />
+          </form>
+        </div>
+      </div>
+    </div>
+</div>

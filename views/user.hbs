@@ -1,0 +1,111 @@
+<div class="container w3l-main-user" id="userInfo">
+        {{#if error}}
+        <div class="alert alert-danger alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{error}}
+        </div>
+        {{/if}}
+        {{#if success}}
+        <div class="alert alert-success alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{success}}
+        </div>
+        {{/if}}
+    <div class="row">
+        <div class="user-title">
+            <h1 class="hny-title">Thông tin người dùng</h1>
+        </div>
+        <div class="profile-picture">
+            <div class="user-img">
+                <img src="/images/default.jpg" class="img-user-thumbnail"><br>
+                <label for="userPic" class="label-img">Cập nhật hình ảnh đại diện của người dùng</label>
+                <input type="file" class="input-user-img" id="userPic" name="userPic" accept=".png,.jpg" hidden>
+            </div>
+        </div>
+        <div class="user-info">
+            <div class="user_text">
+                <h4>Họ và tên:</h4>
+                <p class="text_decor">{{userInfo.user_fullname}}</p>
+            </div>
+            <div class="user_text">
+                <h4>Giới tính:</h4>
+                {{#chooseGender  userInfo.user_gender}}
+                    <p class="text_decor">Nam</p>
+                {{else}}
+                    <p class="text_decor">Nữ</p>
+                {{/chooseGender}}
+            </div>
+            <div class="user_text">
+                <h4>Email:</h4>
+                <p class="text_decor">{{userInfo.user_email}}</p>
+            </div>
+            <div class="user_text">
+                <h4>Ngày sinh:</h4>
+                <p class="text_decor" id="birthday">{{userInfo.user_fullname}}</p>
+            </div>
+            <div class="user_text">
+                <h4>Số điện thoại:</h4>
+                <p class="text_decor">{{userInfo.user_phone}}</p>
+            </div>
+            <div class="user_text">
+                <h4>Điểm:</h4>
+                <p class="text_decor">{{userInfo.user_point}}</p>
+            </div>
+        </div>
+        <div class="container-button">
+            <button class="user-info-button" data-toggle="modal" data-target="#editModal">Chỉnh sửa thông tin</button>
+        </div>
+    </div>
+    <!--Modal chỉnh sửa-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title edit-title">Chỉnh sửa thông tin</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/user/edit">
+                <div class="modal-body">
+                    <div class="edit-form">
+                        <div class="edit-label">
+                            <label for="fullname" class="edit-label-content">Họ và tên:</label>
+                            <label for="gender" class="edit-label-content">Giới tính: </label>
+                            <label for="birthday" class="edit-label-content">Ngày sinh:</label>
+                            <label for="phone" class="edit-label-content">Số điện thoại:</label>
+                        </div>
+                        <div class="edit-input">
+                            <input type="hidden" name="user_id" value="{{userInfo.user_id}}"> 
+                            <input type="text" name="fullname" class="edit-input-content"> 
+                            <select id="gender" name="gender" class="edit-input-content">
+                                <option value="1">Nam</option>
+                                <option value="0">Nữ</option>
+                            </select>
+                            <input type="date" name="birthday" class="edit-input-content">
+                            <input type="number" name="phone" class="edit-input-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="edit-button">Lưu thông tin</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{#if user}}
+<script>
+    function handleBirthday(birthday){
+        var birth = birthday.split('-')
+        var getYear = birth[0]
+        var getMonth = birth[1]
+        var getDay = birth[2].substring(0,2)
+        var fullBirthDay = getDay + "/" + getMonth + "/" + getYear
+        return fullBirthDay
+    }
+    var getBirthDay = handleBirthday("{{user.user_birthday}}")
+    document.getElementById("birthday").innerText = getBirthDay
+</script>
+{{/if}}
